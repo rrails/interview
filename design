@@ -1,0 +1,20 @@
+User
+  - name
+  - email
+
+challenge
+  name
+  user_id
+
+
+question
+  interview_id
+  question_text
+
+
+
+attempt
+  user_id
+  interview_id
+  fails
+  passes

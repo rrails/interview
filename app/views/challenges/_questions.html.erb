@@ -1,0 +1,14 @@
+<div class='quest'>
+  <div class='delquestion'>
+    <%= f.label :question_text %><br />
+    <%= f.text_field :question_text %>
+    <%= f.hidden_field :_destroy %>
+    <%= f.button 'Delete question', :id => 'del_question', :class => 'button radius success tiny alert' %>
+    <div>
+      <%= f.fields_for :choices do |ans| %>
+        <%= render 'choices', :f => ans %>
+      <% end %>
+      <%=  link_to_add_choices "add choices",f, :choices , "addchoices" %>
+    </div>
+  </div>
+</div>

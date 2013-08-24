@@ -1,0 +1,13 @@
+<div class ="row">
+  <div class="span10">
+    <div class="nav pull-right">
+      <ul class="menu">
+        <% if @current_user.present? %>
+          <li><%= link_to(@current_user.name, signin_path, :method => :delete, :class => 'btn alert') %></li>
+          <li><%= link_to('Challenges', challenges_path, :class => 'btn') %></li>
+        <% end %>
+      </ul>
+    </div>
+    <h2></h2>
+  </div>
+</div>

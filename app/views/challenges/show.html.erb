@@ -1,0 +1,22 @@
+<% @challenge %>
+<p>Name of Challenge: <%= @challenge.name %><br/>
+Written by: <%= @challenge.user.name %><br/>
+</p>
+<div class='question'>
+  <ol>
+   <% @challenge.questions.each do |q| %>
+      <li><%= q.question_text %></li>
+        <ol>
+          <% q.choices.each do |c| %>
+            <li>
+              <span><%= c.choice %></span>
+              <span><%= c.is_correct %></span>
+            </li>
+          <% end %>
+        </ol>
+    <% end %>
+  </ol>
+</div>
+<%= link_to "Edit", edit_challenge_path(@challenge) %>
+<%= link_to "Destroy", @challenge, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to "View All", challenges_path %>

@@ -1,0 +1,14 @@
+<%= form_for @challenge do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <%= f.fields_for :questions do |builder| %>
+    <%= render 'questions', :f => builder %>
+  <% end %>
+  <div id="addquestlink">
+    <%=  link_to_add_question "add question",f, :questions,"addquestion" %>
+  </div>
+  <p><%= f.submit %></p>
+<% end %>
