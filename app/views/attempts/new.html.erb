@@ -1,0 +1,26 @@
+<%= form_for @attempt do |f| %>
+
+<p>Name of Challenge: <%= @challenge.name %><br/>
+Written by: <%= @challenge.user.name %><br/>
+</p>
+<div class='zquestion large-12 columns'>
+  <% @challenge.questions.each do |q| %>
+    <ol>
+      <div class='box-question large-12 columns'>
+        <div class='large-12 columns question'>
+         <li><%= q.question_text %></li>
+        </div>
+        <% q.choices.each do |c| %>
+          <div class="large-3 small-3 columns">
+            <%= check_box_tag "#{'ans:' + @challenge.id.to_s + ':' + q.id.to_s + ':' + c.id.to_s}" %>
+            <%= c.choice %>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </ol>
+  <% end %>
+</div>
+
+<button id="challengesubmit" class="challengesubmit btn btn-primary" >Submit</button>
+<% end %>

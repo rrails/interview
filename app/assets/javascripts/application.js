@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require underscore
 //= require handlebars
 //= require backbone
-//= require bootstrap
 //= require_tree .
+
+$(function(){ $(document).foundation(); });

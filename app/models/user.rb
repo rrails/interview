@@ -15,4 +15,5 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email,:password, :password_confirmation
   has_many :challenges
+  has_many :attempts
 end

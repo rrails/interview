@@ -1,4 +1,4 @@
-class ChoicesController < ApplicationController
-  def index
-  end
-end
+# class ChoicesController < ApplicationController
+#   def index
+#   end
+# end

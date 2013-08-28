@@ -1,22 +1,29 @@
-<% @challenge %>
-<p>Name of Challenge: <%= @challenge.name %><br/>
-Written by: <%= @challenge.user.name %><br/>
-</p>
-<div class='question'>
-  <ol>
-   <% @challenge.questions.each do |q| %>
-      <li><%= q.question_text %></li>
-        <ol>
+<div class='row'>
+  <div class="large-12 columns">
+    <% @challenge %>
+    <p>Name of Challenge: <%= @challenge.name %><br/>
+      Written by: <%= @challenge.user.name %><br/>
+    </p>
+  </div>
+    <% @challenge.questions.each do |q| %>
+      <div class='large-12 columns question'>
+        <%= q.question_text %>
+        <br><br>
+      </div>
+      <row>
           <% q.choices.each do |c| %>
-            <li>
-              <span><%= c.choice %></span>
-              <span><%= c.is_correct %></span>
-            </li>
+            <div class="large-3 small-3 columns">
+              <textarea rows='4'><%= c.choice %></textarea>
+              <p><%= c.is_correct %></p>
+            </div>
           <% end %>
-        </ol>
+      </row>
     <% end %>
-  </ol>
+  <%= link_to edit_challenge_path(@challenge) do %>
+    <span><i class="icon-pencil icon-large"></i>&nbsp;Edit</span>
+  <% end %>
+
+  <%= link_to "Destroy", @challenge, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to "View All", challenges_path %>
 </div>
-<%= link_to "Edit", edit_challenge_path(@challenge) %>
-<%= link_to "Destroy", @challenge, :confirm => 'Are you sure?', :method => :delete %>
-<%= link_to "View All", challenges_path %>
+

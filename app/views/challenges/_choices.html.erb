@@ -1,6 +1,9 @@
-<div class="choice">
+<div class='choice large-3 columns'>
   <%= f.label :choice %>
-  <%= f.text_area :choice, :rows => 3%>
-  <%= f.label :is_correct %>
-  <%= f.check_box :is_correct %>
+  <%= f.text_area :choice, :rows => 3 %>
+  <div class="correctans">
+    <%= f.check_box :is_correct %>
+    <%= f.label :is_correct %>
+  </div>
 </div>
+

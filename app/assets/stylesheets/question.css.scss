@@ -1,13 +1,40 @@
-.question{
+/* .question{
   border: 1px solid;
   width: 500px;
 }
+*/
 
-.choice{
+
+
+.correctans{
   display: inline-block;
-  width: 24%;
+  width: 50%;
 }
 
 .addchoices{
   display: none;
+}
+
+#challenge-text{
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #edd16f;
+  border-radius: 6px;
+
+}
+
+.box-question{
+  border: 1px solid;
+  padding: 20px;
+  margin: 10px;
+}
+
+.scorestable{
+  width: auto;
+}
+th{
+  text-align: left;
+}
+td{
+  text-align: left;
 }

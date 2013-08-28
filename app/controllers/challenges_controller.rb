@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
   def index
-    @challenges = Challenge.all
+    # @challenges = Challenge.all
+    @challenges = @current_user.challenges
   end
 
   def show
@@ -9,7 +10,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
-    2.times {
+    1.times {
       question = @challenge.questions.build
       4.times {question.choices.build}
     }

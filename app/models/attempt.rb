@@ -14,4 +14,5 @@
 class Attempt < ActiveRecord::Base
   attr_accessible :user_id,:challenge_id,:fails,:passes
   belongs_to :user
+
 end

@@ -1,20 +1,65 @@
-<span>name: </span><%= @user.name %>
-<br>
-<%= @user.email %>
-<%= link_to('Add challenge', new_challenge_path, :class => 'btn btn-primary') %>
-
-
-<h3>My challenges</h3>
-<% if @challenges %>
-  <ul class="nobullet">
-    <% @challenges.each do |challenge| %>
-      <li>
-        <%= challenge.name %>
-        <%= link_to('Edit challenge', edit_challenge_path(challenge), :class => 'btn btn-primary') %>
-      </li>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>My challenges</h4>
+    <% if not @challenges.empty? %>
+      <table class="width_hundred">
+        <% @challenges.each do |challenge| %>
+          <tr>
+            <td><%= challenge.name %></td>
+            <td><%= link_to edit_challenge_path(challenge) do %>
+              <span><i class="foundicon-[icon]">edit</i></span>
+            <% end %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <p> No Challenges yet, why not add one?</p>
     <% end %>
-  </ul>
+    <%= link_to('Add Challenge', new_challenge_path, :class => "btn btn-primary") %>
+  </div>
+
+  <div class="large-6 columns">
+
+    <h4>Challenges Available to take</h4>
+    <% if not @allchallenges.empty? %>
+      <table class="width_hundred">
+        <% @allchallenges.each do |challenge| %>
+          <tr>
+            <td><%= challenge.name %></td>
+            <td><%= challenge.user.name %></td>
+            <td><%= link_to new_attempt_path(challenge) do %>
+              <span><i class="icon-pencil icon-large"></i>&nbsp;Take Challenge</span>
+            <% end %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <p> No Challenges available to take.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+
+  <% if not @scores.empty? %>
+  <h4>Result of Challenges taken</h4>
+  <table class="width_hundred">
+    <tr class='scorestable'>
+      <th>Challenge Name</th>
+      <th>No. of Attempts</th>
+      <th>No. of Passes</th>
+      <th>No. of Fails</th>
+    </tr>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.challenge_name %></td>
+        <td><%= score.attempts %></td>
+        <td><%= score.nopass %></td>
+        <td><%= score.nofails %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 <% end %>
-
-
-<h3>Challenges taken</h3>
+</div>

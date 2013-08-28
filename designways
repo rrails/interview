@@ -1,0 +1,20 @@
+Way 1 to solve the problem
+
+- Controller
+  send the question/answer to the controller
+  come back to show to the user whether it is the correct answer or not
+
+- /check/quizid/answer - the quiz id and answer are dynamic.
+
+- send via javascript
+- respond with html
+
+Way 2
+- javascript
+- send response to server
+- Y/N json data
+- java script creates the page to display
+
+Way 3
+- using handle bars
+- view take the answer

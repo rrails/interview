@@ -4,6 +4,10 @@ Interview::Application.routes.draw do
   resources :questions
   resources :challenges
   resources :choices
+  resources :attempts, except: :new
+
+  get '/attempt/:id/new' => "attempts#new", :as => :new_attempt
+
   get '/signin' => 'session#new'
   post '/signin' => 'session#create'
   delete '/signin' => 'session#destroy'

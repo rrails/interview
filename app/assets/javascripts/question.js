@@ -1,6 +1,8 @@
 var add_question = function(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
+  $(".addchoices").removeClass('addchoices');
+
   $('#addquestlink').before(content.replace(regexp, new_id));
   $(".addchoices").trigger("click");
   $(".addchoices").trigger("click");

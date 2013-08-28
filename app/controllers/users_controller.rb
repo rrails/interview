@@ -17,16 +17,30 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @challenges = @user.challenges
-  end
+    @allchallenges = Challenge.all
 
-  def edit
-    @user = User.find(params[:id])
-  end
+    @attempts = @user.attempts.order("challenge_id ASC")
+    @scores = []
+    if @attempts.empty?
+      return
+    end
+    score = Score.new
+    score.challenge_name = Challenge.find(@attempts[0].challenge_id).name
+    score.challenge_id = @attempts[0].challenge_id
 
-  def udpate
-    user = User.find(params[:id])
-    user.update_attributes(params[:user])
-    redirect_to(user)
+    @scores.push(score)
+
+    @attempts.each do |attempt|
+      if score.challenge_id  != attempt.challenge_id
+        score = Score.new
+        score.challenge_name = Challenge.find(attempt.challenge_id).name
+        score.challenge_id = attempt.challenge_id
+        @scores.push(score)
+      end
+
+      score.increment_attempts
+      score.increment_results(attempt.passes, attempt.fails)
+    end
   end
 
 end

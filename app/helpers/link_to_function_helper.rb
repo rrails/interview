@@ -1,3 +1,4 @@
+# from stack overflow as the function help link_to_function is deprecated
 module LinkToFunctionHelper
   def link_to_function(name, *args, &block)
      html_options = args.extract_options!.symbolize_keys
