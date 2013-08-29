@@ -36,7 +36,7 @@ class ChallengesController < ApplicationController
     if @challenge.update_attributes(params[:challenge])
       redirect_to(@challenge)
     else
-      render :actopn => 'edit'
+      render :action => 'edit'
     end
   end
 
