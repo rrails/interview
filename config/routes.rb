@@ -1,7 +1,6 @@
 Interview::Application.routes.draw do
   root :to => 'home#index'
   resources :users
-  resources :questions
   resources :challenges
   resources :choices
   resources :attempts, except: :new
